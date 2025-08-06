@@ -1,6 +1,16 @@
 function _prompt_hostname
+    set -l _hostname (prompt_hostname)
+
+    if [ $_hostname = "chadnorvell" ]
+        set _hostname 'cloud'
+    else if [ $_hostname = "chadnorvell-glx" ]
+        set _hostname 'glx'
+    else if [ $_hostname = "chadnorvell-bru" ]
+        set _hostname 'bru'
+    end
+
     if test -z "$TMUX" 
-        string join '' -- (set_color -o bryellow) (prompt_hostname) (set_color normal) ' '
+        string join '' -- (set_color -o bryellow) $_hostname (set_color normal) ' '
     end
 end
 
