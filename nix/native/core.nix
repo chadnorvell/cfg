@@ -6,6 +6,7 @@ let
     with kdePackages;
     [
       ark
+      chromium
       elisa
       gwenview
       kate
@@ -47,7 +48,7 @@ in
       obsidian
       proton-pass
       todoist-electron
-      wezterm
+      wl-clipboard
     ]
     ++ kde;
 

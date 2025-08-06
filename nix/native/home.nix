@@ -2,9 +2,19 @@
 
 let
   homeDirectory = config.home.homeDirectory;
+  configRoot = "${homeDirectory}/cfg/home";
+  read = path: builtins.readFile "${configRoot}/${path}";
 in
 {
-  imports = [ ../../home/default.nix ];
+  imports = [
+    ../../home/default.nix
+    ./plasma.nix
+  ];
+
+  programs.kitty = {
+    enable = true;
+    extraConfig = read "kitty/kitty.conf";
+  };
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -20,43 +30,43 @@ in
     videos = "${homeDirectory}/media/videos";
   };
   #
-  # xdg.desktopEntries = {
-  #   kitty = {
-  #     name = "Kitty";
-  #     exec = "kitty";
-  #     type = "Application";
-  #     icon = "cxn-kitty";
-  #     comment = "Fast, feature-rich, GPU based terminal";
-  #     startupNotify = true;
-  #     categories = [
-  #       "Development"
-  #       "System"
-  #       "TerminalEmulator"
-  #     ];
-  #     settings = {
-  #       X-TerminalArgExec = "--";
-  #       X-TerminalArgTitle = "--title";
-  #       X-TerminalArgAppId = "--class";
-  #       X-TerminalArgDir = "--working-directory";
-  #       X-TerminalArgHold = "--hold";
-  #     };
-  #   };
-  #
-  #   kitty-borderless = {
-  #     name = "Kitty (borderless)";
-  #     exec = "kitty -o hide_window_decorations=yes";
-  #     type = "Application";
-  #     icon = "cxn-kitty";
-  #     comment = "Fast, feature-rich, GPU based terminal";
-  #     startupNotify = true;
-  #     settings = {
-  #       X-TerminalArgExec = "--";
-  #       X-TerminalArgTitle = "--title";
-  #       X-TerminalArgAppId = "--class";
-  #       X-TerminalArgDir = "--working-directory";
-  #       X-TerminalArgHold = "--hold";
-  #     };
-  #   };
+  xdg.desktopEntries = {
+    kitty = {
+      name = "Kitty";
+      exec = "kitty";
+      type = "Application";
+      icon = "utilities-terminal";
+      comment = "Fast, feature-rich, GPU based terminal";
+      startupNotify = true;
+      categories = [
+        "Development"
+        "System"
+        "TerminalEmulator"
+      ];
+      settings = {
+        X-TerminalArgExec = "--";
+        X-TerminalArgTitle = "--title";
+        X-TerminalArgAppId = "--class";
+        X-TerminalArgDir = "--working-directory";
+        X-TerminalArgHold = "--hold";
+      };
+    };
+
+    kitty-borderless = {
+      name = "Kitty (borderless)";
+      exec = "kitty -o hide_window_decorations=yes";
+      type = "Application";
+      icon = "utilities-terminal";
+      comment = "Fast, feature-rich, GPU based terminal";
+      startupNotify = true;
+      settings = {
+        X-TerminalArgExec = "--";
+        X-TerminalArgTitle = "--title";
+        X-TerminalArgAppId = "--class";
+        X-TerminalArgDir = "--working-directory";
+        X-TerminalArgHold = "--hold";
+      };
+    };
   #
   #   neovide = {
   #     name = "Neovide";
@@ -97,5 +107,5 @@ in
   #     categories = [ "Office" ];
   #     mimeType = [ "x-scheme-handler/obsidian" ];
   #   };
-  # };
+  };
 }

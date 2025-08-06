@@ -38,4 +38,23 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  services.fwupd.enable = true;
+  hardware.framework.laptop13.audioEnhancement = {
+    enable = true;
+    hideRawDevice = true;
+    rawDeviceName = "alsa_input.pci-0000_c1_00.6.analog-stereo";
+  };
+
+  services.evremap = {
+    enable = true;
+    settings = {
+      device_name = "AT Translated Set 2 keyboard";
+      remap = [
+        {
+          input = ["KEY_CAPSLOCK"];
+          output = ["KEY_LEFTCTRL"];
+        }
+      ];
+    };
+  };
 }

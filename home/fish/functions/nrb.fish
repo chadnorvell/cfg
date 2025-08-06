@@ -6,5 +6,5 @@ function nrb --wraps='sudo nixos-rebuild $argv --flake ~/dev/nix'
     set command 'switch'
   end
 
-  sudo nixos-rebuild $command --impure --flake ~/dev/nix $args
+  sudo nixos-rebuild $command --impure --flake ~/cfg/nix $args
 end

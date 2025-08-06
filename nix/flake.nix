@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     nix-darwin = {
@@ -24,18 +25,26 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nixos-hardware,
       nixos-wsl,
       nix-darwin,
       nix-homebrew,
       homebrew-core,
       homebrew-cask,
       home-manager,
+      plasma-manager,
       ...
     }@inputs:
     let
@@ -59,7 +68,7 @@
       };
 
       nativeHost =
-        hostName:
+        hostName: extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
@@ -77,6 +86,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                 users.${user} = {
                   imports = [ ./native/home.nix ];
                   home.username = user;
@@ -84,7 +94,8 @@
                 };
               };
             }
-          ];
+          ]
+          ++ extraModules;
         };
 
       wslHost =
@@ -148,8 +159,8 @@
     {
       nixosConfigurations = {
         advaita = wslHost "advaita";
-        karuna = nativeHost "karuna";
-        sunyata = nativeHost "sunyata";
+        karuna = nativeHost "karuna" [ nixos-hardware.nixosModules.framework-amd-ai-300-series ];
+        sunyata = nativeHost "sunyata" [ ];
         tahoma = wslHost "tahoma";
       };
 
