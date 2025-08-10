@@ -1,0 +1,118 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "Iosevka Nerd Font";
+  font-size: 16px;
+}
+
+window#waybar {
+  background: #1E2326;
+}
+
+tooltip {
+  margin: 0;
+  padding: 0;
+  background-color: #1E2326;
+  border: 2px solid;
+  border-color: #384B55;
+  border-radius: 12px;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#backlight,
+#pulseaudio,
+#bluetooth,
+#network,
+#power-profiles-daemon,
+#battery,
+#clock {
+  min-width: 12px;
+  margin: 0 8px;
+}
+
+#workspaces button {
+  margin: 0;
+  padding: 0 2px;
+  font-weight: bold;
+  border-bottom: 2px solid;
+  border-color: #1E2326;
+  color: #83C092;
+}
+
+#workspaces button.empty {
+  color: #4F5B58;
+}
+
+#workspaces button.inactive {
+  color: #414B50;
+}
+
+#workspaces button.visible {
+  color: #D699B6;
+}
+
+#workspaces button.active {
+  color: #E69875;
+  border-color: #E69875;
+}
+
+#workspaces button.urgent {
+  color: #E67E80;
+  border-color: #E67E80;
+}
+
+#backlight {
+  color: #DBBC7F;
+}
+
+#pulseaudio {
+  color: #D699B6;
+}
+
+#pulseaudio.muted {
+  color: #414B50;
+}
+
+#network {
+  color: #7FBBB3;
+}
+
+#bluetooth {
+  color: #7FBBB3;
+}
+
+#power-profiles-daemon.performance {
+  color: #E69875;
+}
+
+#power-profiles-daemon.balanced {
+  color: #7FBBB3;
+}
+
+#power-profiles-daemon.power-saver {
+  color: #83C092;
+}
+
+#battery {
+  color: #D3C6AA;
+}
+
+#battery.warning {
+  color: #DBBC7F;
+}
+
+#battery.critical {
+  color: #E67E80;
+}
+
+#clock {
+  color: #D3C6AA;
+}

@@ -1,6 +1,45 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, pkgs-unstable, ... }:
 
 let
+  stable = with pkgs; [
+    android-tools
+    brightnessctl
+    calibre
+    darktable
+    discord
+    firefox
+    impala
+    inkscape
+    gimp
+    kitty
+    lazydocker
+    lazyjournal
+    mpv
+    obsidian
+    playerctl
+    proton-pass
+    pwvucontrol
+    todoist-electron
+    wl-clipboard
+  ];
+
+  unstable = with pkgs-unstable; [
+    beeper
+    wiremix
+  ];
+
+  hypr =
+    with pkgs-unstable;
+    [
+      hypridle
+      hyprland
+      hyprpaper
+      mako
+      walker
+      waybar
+      wofi
+    ];
+
   kde =
     with pkgs;
     with kdePackages;
@@ -24,40 +63,17 @@ let
     ];
 in
 {
+  imports = [
+    ./hypr/nixos.nix
+  ];
+
   environment.systemPackages =
-    with pkgs;
-    [
-      android-tools
-      beeper
-      calibre
-      darktable
-      discord
-      firefox
-      impala
-      inkscape
-      gimp
-      (google-chrome.override {
-        commandLineArgs = [
-          "--enable-features=AcceleratedVideoEncoder"
-          "--ignore-gpu-blocklist"
-          "--enable-zero-copy"
-        ];
-      })
-      kitty
-      lazydocker
-      lazyjournal
-      mpv
-      neovide
-      obsidian
-      proton-pass
-      todoist-electron
-      wl-clipboard
-    ]
+    stable
+    ++ unstable
+    ++ hypr
     ++ kde;
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
-
-  programs.hyprland.enable = true;
 
   programs.obs-studio = {
     enable = true;
@@ -69,10 +85,12 @@ in
   };
 
   networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
   networking.useDHCP = lib.mkDefault true;
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.blueman.enable = true;
 
   virtualisation.docker = {
     enable = true;
@@ -98,6 +116,7 @@ in
     alsa.support32Bit = true;
     jack.enable = true;
     pulse.enable = true;
+    wireplumber.enable = true;
   };
 
   security.pam.services.kwallet = {

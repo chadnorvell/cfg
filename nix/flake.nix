@@ -1,6 +1,8 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -37,6 +39,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       nixos-hardware,
       nixos-wsl,
       nix-darwin,
@@ -69,9 +72,17 @@
 
       nativeHost =
         hostName: extraModules:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs; };
+
+          specialArgs = {
+            inherit inputs outputs;
+
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
 
           modules = [
             baseConfig

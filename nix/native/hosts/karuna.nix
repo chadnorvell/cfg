@@ -38,11 +38,20 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
   services.fwupd.enable = true;
   hardware.framework.laptop13.audioEnhancement = {
     enable = true;
     hideRawDevice = true;
     rawDeviceName = "alsa_input.pci-0000_c1_00.6.analog-stereo";
+  };
+
+  services.logind = {
+    powerKey = "suspend";
+    lidSwitch = "suspend";
+    lidSwitchExternalPower = "suspend";
+    lidSwitchDocked = "ignore";
   };
 
   services.evremap = {

@@ -2,19 +2,18 @@
 
 let
   homeDirectory = config.home.homeDirectory;
-  configRoot = "${homeDirectory}/cfg/home";
+  configRoot = "${homeDirectory}/cfg/nix/native/home";
   read = path: builtins.readFile "${configRoot}/${path}";
+  sym = path: config.lib.file.mkOutOfStoreSymlink "${configRoot}/${path}";
 in
 {
   imports = [
     ../../home/default.nix
+    ./hypr/home.nix
     ./plasma.nix
   ];
 
-  programs.kitty = {
-    enable = true;
-    extraConfig = read "kitty/kitty.conf";
-  };
+  xdg.configFile."kitty".source = sym "kitty";
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -29,7 +28,7 @@ in
     templates = "${homeDirectory}/docs/templates";
     videos = "${homeDirectory}/media/videos";
   };
-  #
+
   xdg.desktopEntries = {
     kitty = {
       name = "Kitty";
@@ -51,61 +50,5 @@ in
         X-TerminalArgHold = "--hold";
       };
     };
-
-    kitty-borderless = {
-      name = "Kitty (borderless)";
-      exec = "kitty -o hide_window_decorations=yes";
-      type = "Application";
-      icon = "utilities-terminal";
-      comment = "Fast, feature-rich, GPU based terminal";
-      startupNotify = true;
-      settings = {
-        X-TerminalArgExec = "--";
-        X-TerminalArgTitle = "--title";
-        X-TerminalArgAppId = "--class";
-        X-TerminalArgDir = "--working-directory";
-        X-TerminalArgHold = "--hold";
-      };
-    };
-  #
-  #   neovide = {
-  #     name = "Neovide";
-  #     type = "Application";
-  #     exec = "neovide %F";
-  #     icon = "cxn-neovim";
-  #     comment = "No Nonsense Neovim Client in Rust";
-  #     categories = [
-  #       "Development"
-  #       "TextEditor"
-  #       "Utility"
-  #     ];
-  #     mimeType = [
-  #       "text/english"
-  #       "text/plain"
-  #       "text/x-makefile"
-  #       "text/x-c++hdr"
-  #       "text/x-c++src"
-  #       "text/x-chdr"
-  #       "text/x-csrc"
-  #       "text/x-java"
-  #       "text/x-moc"
-  #       "text/x-pascal"
-  #       "text/x-tcl"
-  #       "text/x-tex"
-  #       "application/x-shellscript"
-  #       "text/x-c"
-  #       "text/x-c++"
-  #     ];
-  #   };
-  #
-  #   obsidian = {
-  #     name = "Obsidian";
-  #     comment = "Knowledge base";
-  #     exec = "obsidian %u";
-  #     icon = "cxn-obsidian";
-  #     type = "Application";
-  #     categories = [ "Office" ];
-  #     mimeType = [ "x-scheme-handler/obsidian" ];
-  #   };
   };
 }
