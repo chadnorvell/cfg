@@ -33,6 +33,7 @@ in
       darktable
       discord
       firefox
+      impala
       inkscape
       gimp
       (google-chrome.override {
@@ -43,6 +44,8 @@ in
         ];
       })
       kitty
+      lazydocker
+      lazyjournal
       mpv
       neovide
       obsidian
@@ -70,6 +73,10 @@ in
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  virtualisation.docker = {
+    enable = true;
+  };
 
   services.xserver = {
     enable = true;

@@ -1,4 +1,4 @@
-{ hostName, user }:
+{ hostName, user, extraGroups }:
 {
   pkgs,
   ...
@@ -37,10 +37,7 @@ in
   users.users.${user} = {
     description = "Chad Norvell";
     isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
+    extraGroups = [ "wheel" ] ++ extraGroups;
     useDefaultShell = false;
     shell = pkgs.fish;
     packages = (import ./packages.nix { inherit pkgs; }) ++ extraPkgs;

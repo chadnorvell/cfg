@@ -78,6 +78,10 @@
             (import ./nixos.nix {
               inherit user;
               inherit hostName;
+              extraGroups = [
+                "docker"
+                "networkmanager"
+              ];
             })
             ./native/core.nix
             ./native/hosts/${hostName}.nix
@@ -109,6 +113,7 @@
             (import ./nixos.nix {
               inherit hostName;
               inherit user;
+              extraGroups = [];
             })
             nixos-wsl.nixosModules.default
             {
