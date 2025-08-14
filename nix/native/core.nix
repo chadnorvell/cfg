@@ -66,6 +66,8 @@ let
     ];
 in
 {
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = stable ++ unstable ++ hypr ++ kde;
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
