@@ -2,18 +2,19 @@
 
 let
   homeDirectory = config.home.homeDirectory;
-  configRoot = "${homeDirectory}/cfg/nix/native/home";
-  read = path: builtins.readFile "${configRoot}/${path}";
+  configRoot = "${homeDirectory}/cfg/home";
   sym = path: config.lib.file.mkOutOfStoreSymlink "${configRoot}/${path}";
+  hyprlandConfigDir = "${homeDirectory}/.config/hypr/conf";
 in
 {
   imports = [
     ../../home/default.nix
-    ./hypr/home.nix
     ./plasma.nix
   ];
 
+  xdg.configFile."hypr/conf".source = sym "hypr/conf";
   xdg.configFile."kitty".source = sym "kitty";
+  xdg.configFile."waybar".source = sym "waybar";
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -50,5 +51,21 @@ in
         X-TerminalArgHold = "--hold";
       };
     };
+  };
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = null;
+    portalPackage = null;
+
+    extraConfig = ''
+      source = ${hyprlandConfigDir}/monitors.conf
+      source = ${hyprlandConfigDir}/autostart.conf
+      source = ${hyprlandConfigDir}/env.conf
+      source = ${hyprlandConfigDir}/look.conf
+      source = ${hyprlandConfigDir}/input.conf
+      source = ${hyprlandConfigDir}/bindings.conf
+      source = ${hyprlandConfigDir}/rules/general.conf
+    '';
   };
 }

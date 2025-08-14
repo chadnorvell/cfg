@@ -1,4 +1,9 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{
+  lib,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
 let
   stable = with pkgs; [
@@ -28,17 +33,15 @@ let
     wiremix
   ];
 
-  hypr =
-    with pkgs-unstable;
-    [
-      hypridle
-      hyprland
-      hyprpaper
-      mako
-      walker
-      waybar
-      wofi
-    ];
+  hypr = with pkgs-unstable; [
+    hypridle
+    hyprland
+    hyprpaper
+    mako
+    walker
+    waybar
+    wofi
+  ];
 
   kde =
     with pkgs;
@@ -63,17 +66,16 @@ let
     ];
 in
 {
-  imports = [
-    ./hypr/nixos.nix
-  ];
-
-  environment.systemPackages =
-    stable
-    ++ unstable
-    ++ hypr
-    ++ kde;
+  environment.systemPackages = stable ++ unstable ++ hypr ++ kde;
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
+
+  programs.hyprland = {
+    enable = true;
+    package = pkgs-unstable.hyprland;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
 
   programs.obs-studio = {
     enable = true;
