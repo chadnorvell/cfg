@@ -1,0 +1,3 @@
+bindsym $mod+z exec kitty
+bindsym $mod+b exec firefox
+bindsym $mod+f exec dolphin
