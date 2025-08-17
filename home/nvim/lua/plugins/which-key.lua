@@ -13,6 +13,14 @@ return {
             { "<leader>f", group = "files" },
             { "<leader>fs", vim.cmd.w, desc = "save" },
 
+            { "<leader>l", group = "lazy" },
+            { "<leader>lc", function() require("lazy").check() end, desc = "check" },
+            { "<leader>li", function() require("lazy").install() end, desc = "install" },
+            { "<leader>ll", function() require("lazy").home() end, desc = "home" },
+            { "<leader>ls", function() require("lazy").sync() end, desc = "sync" },
+            { "<leader>lu", function() require("lazy").update() end, desc = "update" },
+            { "<leader>lx", function() require("lazy").clean() end, desc = "clean" },
+
             { "<leader>q", group = "quit" },
             { "<leader>qa", vim.cmd.qa, desc = "all" },
 
