@@ -21,6 +21,7 @@ let
     lazyjournal
     mako
     mpv
+    neovide
     obsidian
     playerctl
     proton-pass
