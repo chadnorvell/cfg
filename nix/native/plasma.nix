@@ -4,10 +4,6 @@
   programs.plasma = {
     enable = true;
 
-    kwin.scripts.polonium = {
-      enable = true;
-    };
-
     shortcuts = {
       ksmserver = {
         "Lock Session" = "Meta+F12";
@@ -35,25 +31,6 @@
         "MoveZoomRight" = "none";
         "MoveZoomUp" = "none";
         "Overview" = "none";
-        "PoloniumCycleEngine" = "Meta+|";
-        "PoloniumFocusAbove" = "Meta+K";
-        "PoloniumFocusBelow" = "Meta+J";
-        "PoloniumFocusLeft" = "Meta+H";
-        "PoloniumFocusRight" = "Meta+L";
-        "PoloniumInsertAbove" = "Meta+Shift+K";
-        "PoloniumInsertBelow" = "Meta+Shift+J";
-        "PoloniumInsertLeft" = "Meta+Shift+H";
-        "PoloniumInsertRight" = "Meta+Shift+L";
-        "PoloniumResizeAbove" = "Meta+Ctrl+K";
-        "PoloniumResizeBelow" = "Meta+Ctrl+J";
-        "PoloniumResizeLeft" = "Meta+Ctrl+H";
-        "PoloniumResizeRight" = "Meta+Ctrl+L";
-        "PoloniumRetileWindow" = "Meta+Shift+Space";
-        "PoloniumSwitchBTree" = "Meta+R";
-        "PoloniumSwitchHalf" = "Meta+W";
-        "PoloniumSwitchKwin" = "Meta+T";
-        "PoloniumSwitchMonocle" = "Meta+Q";
-        "PoloniumSwitchThreeColumn" = "Meta+E";
         "Show Desktop" = "none";
         "Switch One Desktop Down" = "none";
         "Switch One Desktop Up" = "none";

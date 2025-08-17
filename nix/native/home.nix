@@ -14,6 +14,9 @@ in
 
   xdg.configFile."hypr/conf".source = sym "hypr/conf";
   xdg.configFile."kitty".source = sym "kitty";
+  xdg.configFile."sway/config.d".source = sym "sway/config.d";
+  xdg.configFile."swayidle".source = sym "sway/swayidle";
+  xdg.configFile."swaylock".source = sym "sway/swaylock";
   xdg.configFile."waybar".source = sym "waybar";
 
   xdg.enable = true;
@@ -53,6 +56,15 @@ in
     };
   };
 
+  wayland.windowManager.sway = {
+    enable = true;
+    package = null;
+    config = null;
+    extraConfig = ''
+      include ~/.config/sway/config.d/*
+    '';
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
@@ -67,5 +79,27 @@ in
       source = ${hyprlandConfigDir}/bindings.conf
       source = ${hyprlandConfigDir}/rules/general.conf
     '';
+  };
+
+  services.shikane = {
+    enable = true;
+
+    settings = {
+      profile = [
+        {
+          name = "solo";
+          output = [
+            {
+              # Framework 13 built-in display
+              match = ["m=NE135A1M-NY1" "s=" "v=BOE"];
+              enable = true;
+              mode = "2880x1920@120Hz";
+              position = "0,0";
+              scale = 1.5;
+            }
+          ];
+        }
+      ];
+    };
   };
 }

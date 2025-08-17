@@ -113,8 +113,8 @@
     "tooltip-format-wifi": "{essid}\non {ifname} @ {frequency}GHz {signalStrength}%\nat {ipaddr}\nvia {gwaddr}\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "on {ifname}\nat {ipaddr}\nvia {gwaddr}\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-disconnected": "Disconnected",
-    "interval": 3
-    "nospacing": 1,
+    "interval": 3,
+    "nospacing": 1
   },
 
   "battery": {

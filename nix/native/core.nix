@@ -13,19 +13,25 @@ let
     darktable
     discord
     firefox
-    impala
     inkscape
     gimp
+    grim
     kitty
     lazydocker
     lazyjournal
+    mako
     mpv
     obsidian
     playerctl
     proton-pass
     pwvucontrol
+    shikane
+    slurp
     todoist-electron
     wl-clipboard
+    waybar
+    wdisplays
+    wofi
   ];
 
   unstable = with pkgs-unstable; [
@@ -37,10 +43,6 @@ let
     hypridle
     hyprland
     hyprpaper
-    mako
-    walker
-    waybar
-    wofi
   ];
 
   kde =
@@ -86,6 +88,20 @@ in
     plugins = with pkgs.obs-studio-plugins; [
       obs-vaapi
     ];
+  };
+
+  programs.sway = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  programs.uwsm = {
+    enable = true;
+
+    waylandCompositors.sway = {
+      prettyName = "Sway";
+      binPath = "/run/current-system/sw/bin/sway";
+    };
   };
 
   networking.networkmanager.enable = true;
