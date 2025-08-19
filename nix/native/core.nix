@@ -5,73 +5,10 @@
   ...
 }:
 
-let
-  stable = with pkgs; [
-    android-tools
-    brightnessctl
-    calibre
-    darktable
-    discord
-    firefox
-    inkscape
-    gimp
-    grim
-    kitty
-    lazydocker
-    lazyjournal
-    mako
-    mpv
-    neovide
-    obsidian
-    playerctl
-    proton-pass
-    pwvucontrol
-    shikane
-    slurp
-    todoist-electron
-    wl-clipboard
-    waybar
-    wdisplays
-    wofi
-  ];
-
-  unstable = with pkgs-unstable; [
-    beeper
-    wiremix
-  ];
-
-  hypr = with pkgs-unstable; [
-    hypridle
-    hyprland
-    hyprpaper
-  ];
-
-  kde =
-    with pkgs;
-    with kdePackages;
-    [
-      ark
-      chromium
-      elisa
-      gwenview
-      kate
-      kcharselect
-      kcolorchooser
-      kcron
-      kjournald
-      kompare
-      ksystemlog
-      kwallet
-      okular
-      partitionmanager
-      sddm-kcm
-      skanpage
-    ];
-in
 {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.systemPackages = stable ++ unstable ++ hypr ++ kde;
+  environment.systemPackages = (import ./packages.nix { inherit pkgs pkgs-unstable; });
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
 

@@ -10,12 +10,17 @@ with pkgs;
   fish-lsp
   fzf
   gcc
+  groff
   gum
   hexyl
   htop
   imagemagick
   jq
+  lazydocker
+  lazyjournal
   lua-language-server
+  man-pages
+  man-pages-posix
   nil
   nixfmt-rfc-style
   procps
