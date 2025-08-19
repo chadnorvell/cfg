@@ -42,14 +42,17 @@
     { device = "/dev/disk/by-uuid/ae5eb03c-b670-43f2-a4d5-a9e9353d617e"; }
   ];
 
+  hardware.bluetooth.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver
-    vpl-gpu-rt
-  ];
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
