@@ -1,0 +1,34 @@
+[[profile]]
+name = "solo"
+  [[profile.output]]
+  # Framework 13 built-in display
+  match = ["m=NE135A1M-NY1", "s=", "v=BOE"]
+  enable = true
+  mode = "2880x1920@120Hz"
+  position = "0,0"
+  scale = 1.5
+
+[[profile]]
+name = "home-single"
+  [[profile.output]]
+  match = ["m=DELL U4025QW", "s=59SGC34", "v=Dell Inc."]
+  enable = true
+  mode = "5120x2160@120Hz"
+  position = "0,0"
+  scale = 1.25
+
+[[profile]]
+name = "home-dual"
+  [[profile.output]]
+  match = ["m=DELL U4025QW", "s=59SGC34", "v=Dell Inc."]
+  enable = true
+  mode = "5120x2160@120Hz"
+  position = "2048,576"
+  scale = 1.25
+
+  [[profile.output]]
+  match = ["m=LG SDQHD", "s=404NTTQ8V657", "v=LG Electronics"]
+  enable = true
+  mode = "2560x2880@59.982Hz"
+  position = "0,0"
+  scale = 1.25

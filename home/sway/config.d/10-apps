@@ -1,3 +1,4 @@
 bindsym $mod+z exec kitty
 bindsym $mod+b exec firefox
+bindsym $mod+Shift+b exec firefox -P dev
 bindsym $mod+f exec dolphin

@@ -5,10 +5,10 @@ exec swayidle -w
 bindsym $mod+F12 exec swaylock
 
 # Run shikane to manage display configs.
-#exec_always {
-#  pkill shikane
-#  shikane &
-#}
+exec_always {
+  pkill shikane
+  shikane &
+}
 
 # Laptop lid switch bindings to change display configs.
 bindswitch --locked lid:on exec shikanectl switch closed

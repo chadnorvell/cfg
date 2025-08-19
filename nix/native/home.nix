@@ -2,8 +2,10 @@
 
 let
   homeDirectory = config.home.homeDirectory;
-  configRoot = "${homeDirectory}/cfg/home";
-  sym = path: config.lib.file.mkOutOfStoreSymlink "${configRoot}/${path}";
+  cfgRoot = "${homeDirectory}/cfg";
+  cfgHomeRoot = "${cfgRoot}/home";
+  symCfg = path: config.lib.file.mkOutOfStoreSymlink "${cfgRoot}/${path}";
+  symHome = path: config.lib.file.mkOutOfStoreSymlink "${cfgHomeRoot}/${path}";
   hyprlandConfigDir = "${homeDirectory}/.config/hypr/conf";
 in
 {
@@ -12,12 +14,15 @@ in
     ./plasma.nix
   ];
 
-  xdg.configFile."hypr/conf".source = sym "hypr/conf";
-  xdg.configFile."kitty".source = sym "kitty";
-  xdg.configFile."sway/config.d".source = sym "sway/config.d";
-  xdg.configFile."swayidle".source = sym "sway/swayidle";
-  xdg.configFile."swaylock".source = sym "sway/swaylock";
-  xdg.configFile."waybar".source = sym "waybar";
+  home.file."media/images/wallpaper".source = symCfg "wallpaper";
+
+  xdg.configFile."hypr/conf".source = symHome "hypr/conf";
+  xdg.configFile."kitty".source = symHome "kitty";
+  xdg.configFile."shikane".source = symHome "shikane";
+  xdg.configFile."sway/config.d".source = symHome "sway/config.d";
+  xdg.configFile."swayidle".source = symHome "sway/swayidle";
+  xdg.configFile."swaylock".source = symHome "sway/swaylock";
+  xdg.configFile."waybar".source = symHome "waybar";
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -79,27 +84,5 @@ in
       source = ${hyprlandConfigDir}/bindings.conf
       source = ${hyprlandConfigDir}/rules/general.conf
     '';
-  };
-
-  services.shikane = {
-    enable = true;
-
-    settings = {
-      profile = [
-        {
-          name = "solo";
-          output = [
-            {
-              # Framework 13 built-in display
-              match = ["m=NE135A1M-NY1" "s=" "v=BOE"];
-              enable = true;
-              mode = "2880x1920@120Hz";
-              position = "0,0";
-              scale = 1.5;
-            }
-          ];
-        }
-      ];
-    };
   };
 }
