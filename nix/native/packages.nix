@@ -36,12 +36,6 @@ let
     beeper
   ];
 
-  hypr = with pkgs-unstable; [
-    hypridle
-    hyprland
-    hyprpaper
-  ];
-
   kde =
     with pkgs;
     with kdePackages;
@@ -64,4 +58,4 @@ let
       skanpage
     ];
 in
-stable ++ unstable ++ hypr ++ kde
+stable ++ unstable ++ kde

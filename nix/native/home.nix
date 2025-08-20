@@ -6,7 +6,6 @@ let
   cfgHomeRoot = "${cfgRoot}/home";
   symCfg = path: config.lib.file.mkOutOfStoreSymlink "${cfgRoot}/${path}";
   symHome = path: config.lib.file.mkOutOfStoreSymlink "${cfgHomeRoot}/${path}";
-  hyprlandConfigDir = "${homeDirectory}/.config/hypr/conf";
 in
 {
   imports = [
@@ -67,22 +66,6 @@ in
     config = null;
     extraConfig = ''
       include ~/.config/sway/config.d/*
-    '';
-  };
-
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = null;
-    portalPackage = null;
-
-    extraConfig = ''
-      source = ${hyprlandConfigDir}/monitors.conf
-      source = ${hyprlandConfigDir}/autostart.conf
-      source = ${hyprlandConfigDir}/env.conf
-      source = ${hyprlandConfigDir}/look.conf
-      source = ${hyprlandConfigDir}/input.conf
-      source = ${hyprlandConfigDir}/bindings.conf
-      source = ${hyprlandConfigDir}/rules/general.conf
     '';
   };
 }

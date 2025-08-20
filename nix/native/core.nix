@@ -12,13 +12,6 @@
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
 
-  programs.hyprland = {
-    enable = true;
-    package = pkgs-unstable.hyprland;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
-
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
