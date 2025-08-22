@@ -70,6 +70,8 @@
     wireplumber.enable = true;
   };
 
+  services.tailscale.enable = true;
+
   security.pam.services.kwallet = {
     name = "kwallet";
     enableKwallet = true;
