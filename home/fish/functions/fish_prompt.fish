@@ -47,6 +47,12 @@ function fish_prompt
     set -l last_status $status
     set -l prompt_symbol (string join '' '» ' (set_color normal))
 
+    set -l jobs (jobs | count)
+
+    if test "$jobs" -gt 0
+        set prompt_symbol (string join '' "$jobs$prompt_symbol")
+    end
+
     if test -n "$IN_NIX_SHELL"
         set prompt_symbol (string join '' "ƒ $prompt_symbol")
     end
