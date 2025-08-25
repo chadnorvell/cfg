@@ -35,14 +35,24 @@ in
 
   programs.git = {
     enable = true;
+    delta.enable = true;
 
     userName = "Chad Norvell";
     userEmail = "chadnorvell@pm.me";
     lfs.enable = true;
 
+    aliases = {
+      del-branches = "!git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D";
+      fixup-on = "!git log --oneline | gum filter | cut -d' ' -f1 | git commit --fixup";
+      log1 = "log --oneline";
+      logm = "log main..HEAD";
+      logm1 = "log main..HEAD --oneline";
+    };
+
     extraConfig = {
-      core.editor = "vim";
+      core.editor = "nvim";
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 
