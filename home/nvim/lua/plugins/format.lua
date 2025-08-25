@@ -6,7 +6,6 @@ return {
       lua = { "stylua" },
       python = { "ruff" },
       rust = { "rustfmt" },
-
       javascript = { "prettierd" },
       javascriptreact = { "prettierd" },
       typescript = { "prettierd" },
@@ -24,6 +23,14 @@ return {
       end,
       mode = "",
       desc = "format",
+    },
+    {
+      "<leader>bF",
+      function()
+        require("conform").format({ async = true, formatters = { "fx" } })
+      end,
+      mode = "",
+      desc = "fx format-code",
     },
   },
 }
