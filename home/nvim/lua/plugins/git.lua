@@ -11,6 +11,7 @@ return {
         end,
         keys = {
             { "<leader>gs", "<cmd>Neogit<cr>", desc = "git status" },
+            { "<leader>gS", "<cmd>Neogit kind=replace<cr>", desc = "git status here" },
         },
     },
     {

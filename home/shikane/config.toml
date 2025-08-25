@@ -23,12 +23,12 @@ name = "home-dual"
   match = ["m=DELL U4025QW", "s=59SGC34", "v=Dell Inc."]
   enable = true
   mode = "5120x2160@120Hz"
-  position = "2048,576"
+  position = "3072,0"
   scale = 1.25
 
   [[profile.output]]
-  match = ["m=LG SDQHD", "s=404NTTQ8V657", "v=LG Electronics"]
+  search = ["m=Odyssey G80SD", "s=H1AK500000", "v=Samsung Electric Company"]
   enable = true
-  mode = "2560x2880@59.982Hz"
+  mode = "3840x2160@120Hz"
   position = "0,0"
   scale = 1.25

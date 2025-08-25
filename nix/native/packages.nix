@@ -15,6 +15,7 @@ let
     inkscape
     gimp
     grim
+    helvum
     kitty
     mako
     mpv
@@ -26,6 +27,7 @@ let
     shikane
     slurp
     todoist-electron
+    usbutils
     wl-clipboard
     waybar
     wdisplays
