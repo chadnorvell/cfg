@@ -15,6 +15,12 @@ return {
             html = { "prettierd" },
             css = { "prettierd" },
         },
+        formatters = {
+            fx = {
+                command = "fx",
+                args = { "format-code", "--files=$FILENAME" },
+            },
+        },
     },
     keys = {
         {
@@ -24,6 +30,14 @@ return {
             end,
             mode = "",
             desc = "format",
+        },
+        {
+            "<leader>bF",
+            function()
+                require("conform").format({ async = true, formatters = { "fx" } })
+            end,
+            mode = "",
+            desc = "fx format-code",
         },
     },
 }
