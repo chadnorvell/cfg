@@ -20,6 +20,27 @@ font pango:Iosevka Nerd Font 12
 gaps inner 8
 gaps outer 4
 
+set $bgd  #1E2326
+set $bg0  #272E33
+set $bg5  #4F5B58
+set $fg   #D3C6AA
+set $blue #7FBBB3
+set $aqua #83C092
+set $purple #D699B6
+set $red  #E67E80
+set $bgblue #384B55
+set $bggreen #3C4841
+
+client.background              $bg0
+client.focused            $bg5 $bg0 $fg  $purple    $aqua
+client.focused_inactive   $bg0 $bgd $bg5 $bggreen $bgblue 
+#client.focused_tab_title  $bg0 $bgd $bg5
+client.unfocused          $bg0 $bgd $bg5 $bg0      $bg0
+client.urgent             $bg0 $bgd $red $red      $red
+
+default_border pixel
+default_floating_border normal
+
 for_window [app_id="kitty"] border pixel
 for_window [app_id="google-chrome"] border pixel
 for_window [app_id="firefox"] border pixel
