@@ -24,6 +24,7 @@ let
     playerctl
     proton-pass
     pwvucontrol
+    qmk
     shikane
     slurp
     todoist-electron
