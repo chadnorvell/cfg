@@ -10,6 +10,8 @@ in
   home.stateVersion = "25.05";
   home.sessionPath = [ "$HOME/.local/bin" ];
 
+  home.file.".local/bin/swaylock".source = sym "sway/swaylock/swaylock.sh";
+
   programs.home-manager.enable = true;
 
   programs.bat = {
