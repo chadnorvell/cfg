@@ -2,6 +2,8 @@
 
 with pkgs;
 [
+  clang
+  clang-tools
   curl
   delta
   eza
