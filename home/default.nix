@@ -84,6 +84,17 @@ in
     enable = true;
     enableBashIntegration = false;
     enableFishIntegration = false;
+
+    settings = {
+      opener = {
+        edit = [
+          {
+            run = "nvim \"$@\"";
+            block = true;
+          }
+        ];
+      };
+    };
   };
 
   programs.zoxide = {
