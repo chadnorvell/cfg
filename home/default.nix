@@ -43,10 +43,14 @@ in
 
     aliases = {
       del-branches = "!git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D";
-      fixup-on = "!git log --oneline | gum filter | cut -d' ' -f1 | git commit --fixup";
+      fixup-on = "!git log --oneline | gum choose | awk '{print $1}' | xargs git commit --fixup";
       log1 = "log --oneline";
       logm = "log main..HEAD";
       logm1 = "log main..HEAD --oneline";
+      logt1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+      logt2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+      logt3 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
+      squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} \"$@\"); }; f";
     };
 
     extraConfig = {

@@ -10,6 +10,7 @@ with pkgs;
   fish-lsp
   fzf
   gcc
+  git-absorb
   groff
   gum
   hexyl
