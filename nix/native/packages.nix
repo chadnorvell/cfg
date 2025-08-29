@@ -11,6 +11,7 @@ let
     calibre
     darktable
     discord
+    feh
     firefox
     inkscape
     gimp
