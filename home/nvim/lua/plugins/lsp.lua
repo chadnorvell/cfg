@@ -126,7 +126,8 @@ return {
                     server_settings.capabilities or {}
                 )
 
-                require("lspconfig")[server_name].setup(server_settings)
+                vim.lsp.config(server_name, server_settings)
+                vim.lsp.enable(server_name)
             end
         end,
     },
