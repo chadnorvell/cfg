@@ -13,6 +13,7 @@ with pkgs;
   fzf
   gcc
   git-absorb
+  git-town
   groff
   gum
   hexyl
