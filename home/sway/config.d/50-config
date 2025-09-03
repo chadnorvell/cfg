@@ -117,6 +117,9 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+bindsym $mod+bracketleft focus prev
+bindsym $mod+bracketright focus next
+
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
