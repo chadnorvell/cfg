@@ -5,6 +5,7 @@ let
   configRoot = "${homeDirectory}/cfg/home";
   read = path: builtins.readFile "${configRoot}/${path}";
   sym = path: config.lib.file.mkOutOfStoreSymlink "${configRoot}/${path}";
+  jjExec = cmd: ["util" "exec" "--" "bash" "-c" cmd ""];
 in
 {
   home.stateVersion = "25.05";
@@ -59,6 +60,30 @@ in
       core.editor = "nvim";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+    };
+  };
+
+  programs.jujutsu = {
+    enable = true;
+
+    settings = {
+      user = {
+        name = "Chad Norvell";
+        email = "chadnorvell@pm.me";
+      };
+
+      ui.editor = "nvim";
+      ui.paginate = "never";
+
+      aliases = {
+        c = ["commit"];
+        d = ["describe"];
+        mark = jjExec "jj bookmark create -r @ $1";
+        markAt = jjExec "jj bookmark create -r $1 $2";
+        push = jjExec "jj git push --allow-new $1";
+        "push!" = jjExec "jj git push -c @-";
+        sync = jjExec "jj git fetch && jj rebase -d main@origin";
+      };
     };
   };
 

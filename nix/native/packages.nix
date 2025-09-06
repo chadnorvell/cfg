@@ -19,6 +19,7 @@ let
     helvum
     kitty
     mako
+    meld
     mpv
     neovide
     obsidian

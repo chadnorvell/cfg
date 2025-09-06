@@ -68,4 +68,6 @@ in
       include ~/.config/sway/config.d/*
     '';
   };
+
+  programs.jujutsu.settings.ui.merge-editor = "meld";
 }
