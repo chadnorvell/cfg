@@ -57,7 +57,6 @@
   };
 
   services.openssh.enable = true;
-  services.printing.enable = true;
   services.pulseaudio.enable = false;
 
   services.pipewire = {
@@ -80,4 +79,18 @@
   security.rtkit.enable = true;
 
   hardware.keyboard.qmk.enable = true;
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-browsed
+      cups-filters
+    ];
+  };
 }

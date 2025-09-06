@@ -7,6 +7,7 @@
 let
   stable = with pkgs; [
     android-tools
+    bluetuith
     brightnessctl
     calibre
     darktable
