@@ -79,8 +79,10 @@ in
         c = ["commit"];
         d = ["describe"];
         mark = jjExec "jj bookmark create -r @ $1";
+        "mark-" = jjExec "jj bookmark create -r @- $1";
         markAt = jjExec "jj bookmark create -r $1 $2";
-        push = jjExec "jj git push --allow-new $1";
+        push = jjExec "jj git push --allow-new -b $1";
+        pushAll = jjExec "jj git push --allow-new --all";
         "push!" = jjExec "jj git push -c @-";
         sync = jjExec "jj git fetch && jj rebase -d main@origin";
       };
