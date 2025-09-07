@@ -63,3 +63,8 @@ vim.filetype.add({ extension = { fidl = "fidl" } })
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus"
 end)
+
+vim.diagnostic.config({
+    signs = true,
+    virtual_lines = { only_current_line = true },
+})
