@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let
   homeDirectory = config.home.homeDirectory;
@@ -100,6 +100,12 @@ in
   xdg.configFile."nvim/lua" = {
     source = sym "nvim/lua";
     recursive = true;
+  };
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    package = pkgs.openssh;
   };
 
   programs.tmux = {
