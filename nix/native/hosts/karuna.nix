@@ -54,6 +54,13 @@
     lidSwitchDocked = "ignore";
   };
 
+  systemd.sleep = {
+    extraConfig = ''
+      HibernateOnACPower=no
+      HibernateDelaySec=240min
+    '';
+  };
+
   services.evremap = {
     enable = true;
     settings = {
