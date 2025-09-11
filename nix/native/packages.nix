@@ -28,18 +28,18 @@ let
     proton-pass
     pwvucontrol
     qmk
+    signal-desktop
     shikane
     slurp
-    todoist-electron
     usbutils
     wl-clipboard
     waybar
     wdisplays
+    whatsie
     wofi
   ];
 
   unstable = with pkgs-unstable; [
-    beeper
   ];
 
   kde =
