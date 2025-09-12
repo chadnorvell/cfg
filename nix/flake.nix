@@ -125,9 +125,17 @@
 
       wslHost =
         hostName:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
-          specialArgs = inputs;
+
+          specialArgs = {
+            inherit inputs;
+
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
 
           modules = [
             baseConfig
@@ -159,9 +167,17 @@
 
       darwinHost =
         hostName:
-        nix-darwin.lib.darwinSystem {
+        nix-darwin.lib.darwinSystem rec {
           system = "aarch64-darwin";
-          specialArgs = inputs;
+
+          specialArgs = {
+            inherit inputs;
+
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
 
           modules = [
             baseConfig

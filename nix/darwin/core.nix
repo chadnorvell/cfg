@@ -3,7 +3,7 @@
   homebrew-core,
   homebrew-cask,
 }:
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 let
   darwinPkgs = with pkgs; [
@@ -32,7 +32,7 @@ in
     };
   };
 
-  environment.systemPackages = (import ../packages.nix { inherit pkgs; }) ++ darwinPkgs;
+  environment.systemPackages = (import ../packages.nix { inherit pkgs pkgs-unstable; }) ++ darwinPkgs;
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
 
   homebrew = {
