@@ -104,8 +104,15 @@ in
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
     package = pkgs.openssh;
+
+    addKeysToAgent = "yes";
+
+    extraConfig = ''
+      IgnoreUnknown UseKeychain
+      IdentityFile ~/.ssh/id_ed25519
+      UseKeychain yes
+    '';
   };
 
   programs.tmux = {
