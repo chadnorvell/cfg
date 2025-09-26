@@ -6,12 +6,10 @@
   "height": 32,
 
   "modules-left": [
-    "hyprland/workspaces",
     "sway/workspaces"
   ],
 
   "modules-center": [
-    "hyprland/window",
     "sway/window"
   ],
 
@@ -97,18 +95,18 @@
   },
 
   "bluetooth": {
-    "format": "\uf00af",
-    "format-connected": "\uf00b1 {num_connections}",
-    "format-disabled": "\uf00b2",
+    "format": "",
+    "format-connected": " {num_connections}",
+    "format-disabled": "",
     "tooltip-format": "{device_enumerate}",
     "on-click": "blueman-manager"
   },
 
   "network": {
-    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
     "format" : "{icon}",
+    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
     "format-wifi" : "{icon}",
-    "format-ethernet" : "󰀂",
+    "format-ethernet" : "",
     "format-disconnected" : "󰖪",
     "tooltip-format-wifi": "{essid}\non {ifname} @ {frequency}GHz {signalStrength}%\nat {ipaddr}\nvia {gwaddr}\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
     "tooltip-format-ethernet": "on {ifname}\nat {ipaddr}\nvia {gwaddr}\n⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",
@@ -171,8 +169,13 @@
   },
 
   "clock": {
-    "format": "{:%A %H:%M}",
-    "format-alt": "{:%d %B W%V %Y}",
-    "tooltip": false
+    "format": "{:%H:%M %Z}",
+    "tooltip": true,
+    "tooltip-format": "{:%A %d %B W%V %Y}",
+    "timezones": ["", "Etc/UTC"],
+    "actions": {
+      "on-scroll-up": "tz_up",
+      "on-scroll-down": "tz_down"
+    }
   }
 }
