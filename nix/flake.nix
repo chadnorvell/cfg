@@ -111,7 +111,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
+                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 users.${user} = {
                   imports = [ ./native/home.nix ];
                   home.username = user;
