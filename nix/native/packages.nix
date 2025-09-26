@@ -10,6 +10,7 @@ let
     bluetuith
     brightnessctl
     calibre
+    cifs-utils
     darktable
     discord
     feh

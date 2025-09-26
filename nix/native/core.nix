@@ -38,6 +38,7 @@
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.useDHCP = lib.mkDefault true;
+  networking.nameservers = ["192.168.86.1" "8.8.8.8" "8.8.4.4" "1.1.1.1"];
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
