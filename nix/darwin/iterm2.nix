@@ -493,7 +493,7 @@ in
           $DRY_RUN_CMD mkdir -p "$PREF_DIR"
 
           # Make sure iTerm2 is not running to avoid conflicts
-          if pgrep -x "iTerm2" > /dev/null; then
+          if /usr/bin/pgrep -x "iTerm2" > /dev/null; then
             echo "Warning: iTerm2 is currently running. Changes may not take effect until restart."
           fi
 
