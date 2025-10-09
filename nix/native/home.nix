@@ -6,6 +6,20 @@ let
   cfgHomeRoot = "${cfgRoot}/home";
   symCfg = path: config.lib.file.mkOutOfStoreSymlink "${cfgRoot}/${path}";
   symHome = path: config.lib.file.mkOutOfStoreSymlink "${cfgHomeRoot}/${path}";
+
+  customIcons = [
+    "cxn-google-messages.svg"
+    "cxn-whatsapp.svg"
+  ];
+
+  createCustomIconFiles = builtins.listToAttrs (
+    map (f: {
+      name = ".local/share/icons/${f}";
+      value = {
+        source = "${cfgRoot}/nix/native/icons/${f}";
+      };
+    }) customIcons
+  );
 in
 {
   imports = [
@@ -13,15 +27,11 @@ in
     ./plasma.nix
   ];
 
-  home.file."media/images/wallpaper".source = symCfg "wallpaper";
+  home.file = {
+    "media/images/wallpaper".source = symCfg "wallpaper";
+  } // createCustomIconFiles;
 
-  xdg.configFile."hypr/conf".source = symHome "hypr/conf";
   xdg.configFile."kitty".source = symHome "kitty";
-  xdg.configFile."shikane".source = symHome "shikane";
-  xdg.configFile."sway/config.d".source = symHome "sway/config.d";
-  xdg.configFile."swayidle".source = symHome "sway/swayidle";
-  xdg.configFile."swaylock".source = symHome "sway/swaylock";
-  xdg.configFile."waybar".source = symHome "waybar";
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -38,6 +48,18 @@ in
   };
 
   xdg.desktopEntries = {
+    chrome-hpfldicfbfomlpcikngkocigghgafkph-Personal = {
+      name = "Messages";
+      type = "Application";
+      terminal = false;
+      exec = "google-chrome-stable --profile-directory=Personal --app-id=hpfldicfbfomlpcikngkocigghgafkph";
+      icon = "cxn-google-messages";
+      categories = [ "Network" ];
+      settings = {
+        StartupWMClass = "crx_hpfldicfbfomlpcikngkocigghgafkph";
+      };
+    };
+
     kitty = {
       name = "Kitty";
       exec = "kitty";
@@ -58,16 +80,14 @@ in
         X-TerminalArgHold = "--hold";
       };
     };
-  };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    package = null;
-    config = null;
-    extraConfig = ''
-      include ~/.config/sway/config.d/*
-    '';
+    whatsie = {
+      name = "WhatsApp";
+      comment = "Feature rich WhatsApp Client for Desktop Linux";
+      type = "Application";
+      exec = "whatsie";
+      icon = "cxn-whatsapp";
+      categories = [ "Network" ];
+    };
   };
-
-  programs.jujutsu.settings.ui.merge-editor = "meld";
 }

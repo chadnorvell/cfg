@@ -13,7 +13,10 @@ let
     eza
     fastfetch
     fd
+    ffmpeg
+    file
     fish-lsp
+    flac
     fzf
     gcc
     groff
@@ -27,8 +30,10 @@ let
     man-pages-posix
     nil
     nixfmt-rfc-style
+    opusTools
     procps
     ripgrep
+    rsgain
     rsync
     silver-searcher
     statix
