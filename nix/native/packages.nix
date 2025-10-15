@@ -16,6 +16,12 @@ let
     firefox
     inkscape
     gimp
+    (google-chrome.override {
+      commandLineArgs = [
+        "--ozone-platform=wayland"
+        "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
+      ];
+    })
     kitty
     mpv
     obsidian
@@ -25,6 +31,7 @@ let
     usbutils
     wl-clipboard
     whatsie
+    vlc
   ];
 
   unstable = with pkgs-unstable; [
