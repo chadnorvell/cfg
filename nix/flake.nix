@@ -201,7 +201,7 @@
     {
       nixosConfigurations = {
         advaita = wslHost "advaita";
-        karuna = nativeHost "karuna" [ nixos-hardware.nixosModules.framework-amd-ai-300-series ];
+        mazama = nativeHost "mazama" [ nixos-hardware.nixosModules.framework-amd-ai-300-series ];
         sunyata = nativeHost "sunyata" [ ];
         tahoma = wslHost "tahoma";
       };
