@@ -8,6 +8,7 @@ let
   symHome = path: config.lib.file.mkOutOfStoreSymlink "${cfgHomeRoot}/${path}";
 
   customIcons = [
+    "cxn-google-chat.svg"
     "cxn-google-messages.svg"
     "cxn-whatsapp.svg"
   ];
@@ -57,6 +58,18 @@ in
       categories = [ "Network" ];
       settings = {
         StartupWMClass = "crx_hpfldicfbfomlpcikngkocigghgafkph";
+      };
+    };
+
+    chrome-mdpkiolbdkhdjpekfbkbmhigcaggjagi-Constructural = {
+      name = "Google Chat";
+      type = "Application";
+      terminal = false;
+      exec = "google-chrome-stable --profile-directory=Constructural --app-id=mdpkiolbdkhdjpekfbkbmhigcaggjagi";
+      icon = "cxn-google-chat";
+      categories = [ "Network" ];
+      settings = {
+        StartupWMClass = "crx_mdpkiolbdkhdjpekfbkbmhigcaggjagi";
       };
     };
 
