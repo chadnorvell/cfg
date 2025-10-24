@@ -9,6 +9,8 @@ return {
             { "<leader>s", group = "search" },
             { "<leader>t", group = "tabs" },
             { "<leader>x", group = "diagnostics" },
+            { "<leader>xl", function() vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines }) end, desc = "toggle virtual lines" },
+            { "<leader>xt", function() vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text }) end, desc = "toggle virtual text" },
 
             { "<leader>f", group = "files" },
             { "<leader>fs", vim.cmd.w, desc = "save" },
