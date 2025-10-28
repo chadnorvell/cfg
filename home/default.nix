@@ -5,7 +5,15 @@ let
   configRoot = "${homeDirectory}/cfg/home";
   read = path: builtins.readFile "${configRoot}/${path}";
   sym = path: config.lib.file.mkOutOfStoreSymlink "${configRoot}/${path}";
-  jjExec = cmd: ["util" "exec" "--" "bash" "-c" cmd ""];
+  jjExec = cmd: [
+    "util"
+    "exec"
+    "--"
+    "bash"
+    "-c"
+    cmd
+    ""
+  ];
 in
 {
   home.stateVersion = "25.05";
@@ -36,30 +44,36 @@ in
   xdg.configFile."fish/conf.d".source = sym "fish/conf.d";
   xdg.configFile."fish/functions".source = sym "fish/functions";
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
   programs.git = {
     enable = true;
-    delta.enable = true;
 
-    userName = "Chad Norvell";
-    userEmail = "chadnorvell@pm.me";
-    lfs.enable = true;
+    settings = {
+      user = {
+        name = "Chad Norvell";
+        email = "chadnorvell@pm.me";
+      };
 
-    aliases = {
-      del-branches = "!git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D";
-      fixup-on = "!git log --oneline | gum choose | awk '{print $1}' | xargs git commit --fixup";
-      log1 = "log --oneline";
-      logm = "log main..HEAD";
-      logm1 = "log main..HEAD --oneline";
-      logt1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
-      logt2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-      logt3 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
-      squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} \"$@\"); }; f";
-    };
-
-    extraConfig = {
       core.editor = "nvim";
       init.defaultBranch = "main";
+      lfs.enable = true;
       push.autoSetupRemote = true;
+
+      aliases = {
+        del-branches = "!git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D";
+        fixup-on = "!git log --oneline | gum choose | awk '{print $1}' | xargs git commit --fixup";
+        log1 = "log --oneline";
+        logm = "log main..HEAD";
+        logm1 = "log main..HEAD --oneline";
+        logt1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+        logt2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+        logt3 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
+        squash-all = "!f() { git reset $(git commit-tree HEAD^{tree} \"$@\"); }; f";
+      };
     };
   };
 
@@ -76,8 +90,8 @@ in
       ui.paginate = "never";
 
       aliases = {
-        c = ["commit"];
-        d = ["describe"];
+        c = [ "commit" ];
+        d = [ "describe" ];
         mark = jjExec "jj bookmark create -r @ $1";
         "mark-" = jjExec "jj bookmark create -r @- $1";
         markAt = jjExec "jj bookmark create -r $1 $2";
@@ -104,9 +118,12 @@ in
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     package = pkgs.openssh;
 
-    addKeysToAgent = "yes";
+    matchBlocks."*" = {
+      addKeysToAgent = "yes";
+    };
 
     extraConfig = ''
       IgnoreUnknown UseKeychain

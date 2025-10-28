@@ -1,8 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -24,7 +22,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,7 +37,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
       nixos-hardware,
       nixos-wsl,
       nix-darwin,
@@ -82,16 +79,11 @@
 
       nativeHost =
         hostName: extraModules:
-        nixpkgs.lib.nixosSystem rec {
+        nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           specialArgs = {
             inherit inputs outputs;
-
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
           };
 
           modules = [
@@ -125,16 +117,11 @@
 
       wslHost =
         hostName:
-        nixpkgs.lib.nixosSystem rec {
+        nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
 
           specialArgs = {
             inherit inputs;
-
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
           };
 
           modules = [
@@ -167,16 +154,11 @@
 
       darwinHost =
         hostName:
-        nix-darwin.lib.darwinSystem rec {
+        nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
 
           specialArgs = {
             inherit inputs;
-
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
           };
 
           modules = [

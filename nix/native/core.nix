@@ -1,14 +1,13 @@
 {
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
 {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.systemPackages = (import ./packages.nix { inherit pkgs pkgs-unstable; });
+  environment.systemPackages = (import ./packages.nix { inherit pkgs; });
 
   fonts.packages = (import ../fonts.nix { inherit pkgs; });
 

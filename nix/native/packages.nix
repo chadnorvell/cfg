@@ -1,13 +1,12 @@
 {
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
 let
   stable = with pkgs; [
     android-tools
-    calibre
+    # calibre # Install hangs.
     chromium
     cifs-utils
     darktable
@@ -34,9 +33,6 @@ let
     vlc
   ];
 
-  unstable = with pkgs-unstable; [
-  ];
-
   kde =
     with pkgs;
     with kdePackages;
@@ -57,4 +53,4 @@ let
       skanpage
     ];
 in
-stable ++ unstable ++ kde
+stable ++ kde

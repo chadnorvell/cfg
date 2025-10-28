@@ -5,7 +5,6 @@
 }:
 {
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
@@ -47,7 +46,7 @@ in
     extraGroups = [ "wheel" ] ++ extraGroups;
     useDefaultShell = false;
     shell = pkgs.fish;
-    packages = (import ./packages.nix { inherit pkgs pkgs-unstable; }) ++ extraPkgs;
+    packages = (import ./packages.nix { inherit pkgs; }) ++ extraPkgs;
   };
 
   programs.fish.enable = true;

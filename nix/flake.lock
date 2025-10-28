@@ -40,16 +40,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1758463745,
-        "narHash": "sha256-uhzsV0Q0I9j2y/rfweWeGif5AWe0MGrgZ/3TjpDYdGA=",
+        "lastModified": 1761666354,
+        "narHash": "sha256-fHr+tIYBJccNF8QWqgowfRmEAtAMSt1deZIRNKL8A7c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3b955f5f0a942f9f60cdc9cacb7844335d0f21c3",
+        "rev": "ca2ab1d877a24d5a437dad62f56b8b2c02e964e9",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-25.05",
+        "ref": "master",
         "repo": "home-manager",
         "type": "github"
       }
@@ -57,11 +57,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1761669162,
-        "narHash": "sha256-qklH22Gg9oz7yu7g37PzdNY9yAyEz9dF5zOIXHpBbEg=",
+        "lastModified": 1761685236,
+        "narHash": "sha256-uWw9fbOhCHRCMq/qUtu/Cpqnh5XyQSZhlRBjdVSXkQI=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "ad4d895036379f889d1e26615d3db682954597fe",
+        "rev": "6a20032492c187aa4277833da70e5ecf58ab7428",
         "type": "github"
       },
       "original": {
@@ -73,11 +73,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1761668621,
-        "narHash": "sha256-TZn9VbtDMWWLa2ol1LqYdYssf5Kx8ojblbtL23h7U9c=",
+        "lastModified": 1761686021,
+        "narHash": "sha256-WP0d+avuEqVeRrjIoogyjR6KhptgIc/pU/8B9dtVY2k=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "98551076a557150baa5b08ae775b63ad136c6204",
+        "rev": "6cc4f0ecd581c6540cc68c80d041a3499f1d95d9",
         "type": "github"
       },
       "original": {
@@ -177,7 +177,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1761373498,
         "narHash": "sha256-Q/uhWNvd7V7k1H1ZPMy/vkx3F8C13ZcdrKjO7Jv7v0c=",
@@ -189,22 +189,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1761468971,
-        "narHash": "sha256-vY2OLVg5ZTobdroQKQQSipSIkHlxOTrIF1fsMzPh8w8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "78e34d1667d32d8a0ffc3eba4591ff256e80576e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -242,7 +226,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "plasma-manager": "plasma-manager"
       }
     }

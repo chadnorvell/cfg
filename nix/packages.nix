@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
@@ -19,6 +18,7 @@ let
     flac
     fzf
     gcc
+    graphite-cli
     groff
     gum
     hexyl
@@ -41,9 +41,5 @@ let
     trash-cli
     yq
   ];
-
-  unstable = with pkgs-unstable; [
-    graphite-cli
-  ];
 in
-stable ++ unstable
+stable
