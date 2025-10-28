@@ -10,7 +10,7 @@ let
   customIcons = [
     "cxn-google-chat.svg"
     "cxn-google-messages.svg"
-    "cxn-whatsapp.svg"
+    "cxn-whatsapp-web.png"
   ];
 
   createCustomIconFiles = builtins.listToAttrs (
@@ -50,7 +50,7 @@ in
 
   xdg.desktopEntries = {
     chrome-hpfldicfbfomlpcikngkocigghgafkph-Personal = {
-      name = "Messages";
+      name = "Google Messages";
       type = "Application";
       terminal = false;
       exec = "google-chrome-stable --profile-directory=Personal --app-id=hpfldicfbfomlpcikngkocigghgafkph";
@@ -73,6 +73,18 @@ in
       };
     };
 
+    chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Personal = {
+      name = "WhatsApp";
+      type = "Application";
+      terminal = false;
+      exec = "google-chrome-stable --profile-directory=Personal --app-id=hnpfjngllnobngcgfapefoaidbinmjnm";
+      icon = "cxn-whatsapp-web";
+      categories = [ "Network" ];
+      settings = {
+        StartupWMClass = "crx_hnpfjngllnobngcgfapefoaidbinmjnm";
+      };
+    };
+
     kitty = {
       name = "Kitty";
       exec = "kitty";
@@ -92,15 +104,6 @@ in
         X-TerminalArgDir = "--working-directory";
         X-TerminalArgHold = "--hold";
       };
-    };
-
-    whatsie = {
-      name = "WhatsApp";
-      comment = "Feature rich WhatsApp Client for Desktop Linux";
-      type = "Application";
-      exec = "whatsie";
-      icon = "cxn-whatsapp";
-      categories = [ "Network" ];
     };
   };
 }

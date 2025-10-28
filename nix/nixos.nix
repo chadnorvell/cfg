@@ -11,6 +11,8 @@
 
 let
   extraPkgs = with pkgs; [
+    android-tools
+    cifs-utils
     psmisc
   ];
 in

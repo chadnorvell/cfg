@@ -29,8 +29,8 @@ let
     qmk
     signal-desktop
     usbutils
+    viu
     wl-clipboard
-    whatsie
     vlc
   ];
 
@@ -41,11 +41,13 @@ let
     with pkgs;
     with kdePackages;
     [
+      digikam
       falkon
       kbackup
       kcharselect
       kcolorchooser
       kcron
+      kget
       kjournald
       kompare
       ksystemlog
