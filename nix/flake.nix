@@ -31,6 +31,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    elephant.url = "github:abenz1267/elephant";
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs =
@@ -45,6 +52,8 @@
       homebrew-cask,
       home-manager,
       plasma-manager,
+      elephant,
+      walker,
       ...
     }@inputs:
     let
@@ -103,7 +112,10 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                sharedModules = [
+                  plasma-manager.homeModules.plasma-manager
+                  walker.homeManagerModules.default
+                ];
                 users.${user} = {
                   imports = [ ./native/home.nix ];
                   home.username = user;
@@ -129,7 +141,7 @@
             (import ./nixos.nix {
               inherit hostName;
               inherit user;
-              extraGroups = [];
+              extraGroups = [ ];
             })
             nixos-wsl.nixosModules.default
             {

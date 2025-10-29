@@ -32,6 +32,29 @@ in
     "media/images/wallpaper".source = symCfg "wallpaper";
   } // createCustomIconFiles;
 
+  programs.walker = {
+    enable = true;
+    runAsService = true;
+
+    config = {
+      force_keyboard_focus = true;
+
+      providers."default" = [
+        "desktopapplications"
+        "menus:commands"
+        "runner"
+      ];
+
+      providers.prefixes = [
+        { provider = "providerlist"; prefix = ";"; }
+        { provider = "files"; prefix = "/"; }
+        { provider = "menus:commands"; prefix = "="; }
+        { provider = "runner"; prefix = "."; }
+        { provider = "symbols"; prefix = ","; }
+      ];
+    };
+  };
+
   wayland.windowManager.sway = {
     enable = true;
     package = null;
@@ -42,6 +65,7 @@ in
     '';
   };
 
+  xdg.configFile."elephant/menus".source = symHome "elephant/menus";
   xdg.configFile."kitty".source = symHome "kitty";
   xdg.configFile."shikane".source = symHome "shikane";
   xdg.configFile."sway/config.d".source = symHome "sway/config.d";

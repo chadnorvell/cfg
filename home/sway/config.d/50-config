@@ -71,6 +71,7 @@ input type:touchpad clickfinger_button_map lrm
 # kill focused window
 bindsym $mod+q kill
 
+bindsym $mod+p exec walker
 bindsym $mod+d exec wofi --show drun
 
 bindsym $mod+space grim - | wl-copy
