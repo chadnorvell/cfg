@@ -9,4 +9,6 @@ with pkgs;
   noto-fonts
   noto-fonts-cjk-sans
   noto-fonts-emoji
+  ubuntu-sans
+  ubuntu-sans-mono
 ]

@@ -18,6 +18,7 @@ let
     flac
     fzf
     gcc
+    glow
     graphite-cli
     groff
     gum

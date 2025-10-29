@@ -16,7 +16,7 @@ bindswitch --locked lid:off exec shikanectl switch open
 # Dex
 exec dex -ae sway
 
-font pango:Iosevka Nerd Font 12
+font pango:Ubuntu Sans Mono 12
 gaps inner 8
 gaps outer 4
 
@@ -65,11 +65,18 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag enable
 
+input type:touchpad click_method clickfinger
+input type:touchpad clickfinger_button_map lrm
 
 # kill focused window
 bindsym $mod+q kill
 
 bindsym $mod+d exec wofi --show drun
+
+bindsym $mod+space grim - | wl-copy
+bindsym $mod+shift+space grim -g "$(slurp -w 0)" - | wl-copy
+bindsym $mod+tab grim -g "$(slurp -w 0)" $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png
+bindsym $mod+shift+tab grim -g "$(slurp -w 0)" $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -92,7 +99,7 @@ bindsym $mod+Shift+Up resize shrink height 10 px
 bindsym $mod+Shift+Right resize grow width 10 px
 
 # split in horizontal orientation
-bindsym $mod+minus split v
+bindsym $mod+shift+backslash split v
 
 # split in vertical orientation
 bindsym $mod+backslash split h

@@ -32,7 +32,22 @@ in
     "media/images/wallpaper".source = symCfg "wallpaper";
   } // createCustomIconFiles;
 
+  wayland.windowManager.sway = {
+    enable = true;
+    package = null;
+    config = null;
+
+    extraConfig = ''
+      include ~/.config/sway/config.d/*
+    '';
+  };
+
   xdg.configFile."kitty".source = symHome "kitty";
+  xdg.configFile."shikane".source = symHome "shikane";
+  xdg.configFile."sway/config.d".source = symHome "sway/config.d";
+  xdg.configFile."swayidle".source = symHome "sway/swayidle";
+  xdg.configFile."swaylock".source = symHome "sway/swaylock";
+  xdg.configFile."waybar".source = symHome "waybar";
 
   xdg.enable = true;
   xdg.userDirs = {
