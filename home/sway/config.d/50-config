@@ -74,11 +74,6 @@ bindsym $mod+q kill
 bindsym $mod+p exec walker
 bindsym $mod+d exec wofi --show drun
 
-bindsym $mod+space grim - | wl-copy
-bindsym $mod+shift+space grim -g "$(slurp -w 0)" - | wl-copy
-bindsym $mod+tab grim -g "$(slurp -w 0)" $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png
-bindsym $mod+shift+tab grim -g "$(slurp -w 0)" $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png
-
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
