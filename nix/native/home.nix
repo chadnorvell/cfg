@@ -25,7 +25,7 @@ in
 {
   imports = [
     ../../home/default.nix
-    ./plasma.nix
+    ../../home/plasma.nix
   ];
 
   home.file = {
