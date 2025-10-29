@@ -17,6 +17,8 @@ vim.opt.splitright = true
 vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.updatetime = 250
+vim.o.sessionoptions =
+  "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.g.have_nerd_font = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -32,28 +34,28 @@ vim.opt.softtabstop = 0
 
 -- Overrides for 2-space tab stop file formats
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-    pattern = {
-        "*.css",
-        "*.ex",
-        "*.exs",
-        "*.nix",
-        "*.rb",
+  pattern = {
+    "*.css",
+    "*.ex",
+    "*.exs",
+    "*.nix",
+    "*.rb",
 
-        "*.js",
-        "*.cjs",
-        "*.mjs",
-        "*.jsx",
-        "*.ts",
-        "*.cts",
-        "*.mts",
-        "*.tsx",
-        "*.json",
-        "*.jsonc",
-    },
-    callback = function()
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 3
-    end,
+    "*.js",
+    "*.cjs",
+    "*.mjs",
+    "*.jsx",
+    "*.ts",
+    "*.cts",
+    "*.mts",
+    "*.tsx",
+    "*.json",
+    "*.jsonc",
+  },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 3
+  end,
 })
 
 vim.filetype.add({ extension = { fidl = "fidl" } })
@@ -61,10 +63,7 @@ vim.filetype.add({ extension = { fidl = "fidl" } })
 -- Share the system clipboard
 -- Loaded async because otherwise it can increase startup time
 vim.schedule(function()
-    vim.opt.clipboard = "unnamedplus"
+  vim.opt.clipboard = "unnamedplus"
 end)
 
-vim.diagnostic.config({
-    signs = true,
-    virtual_lines = { only_current_line = true },
-})
+vim.diagnostic.config({ signs = true })
