@@ -40,6 +40,7 @@ in
 
     casks = [
       "iterm2"
+      "ungoogled-chromium"
     ];
   };
 
