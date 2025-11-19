@@ -4,16 +4,16 @@ global_search = true
 
 [[entries]]
 text = "Screenshot > Full screen to clipboard"
-actions = { "sshot_full_clip_use" = "grim - | wl-copy" }
+actions = { "sshot_full_clip" = "grim - | wl-copy" }
 
 [[entries]]
 text = "Screenshot > Full screen to file"
-actions = { "sshot_full_file_use" = "grim $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png" }
+actions = { "sshot_full_file" = "grim $XDG_PICTURES_DIR/screenshots/$(date +'%Y%m%d-%H%M%S').png" }
 
 [[entries]]
 text = "Screenshot > Selection to clipboard"
-actions = { "sshot_full_clip_use" = "grim -g $(slurp -w 0) - | wl-copy" }
+actions = { "sshot_select_clip" = "grim -g $(slurp -w 0) - | wl-copy" }
 
 [[entries]]
 text = "Screenshot > Selection to file"
-actions = { "sshot_full_file_use" = "grim -g $(slurp -w 0) $XDG_PICTURES_DIR/$(date +'%Y%m%d-%H%M%S').png" }
+actions = { "sshot_select_file" = "grim -g $(slurp -w 0) $XDG_PICTURES_DIR/screenshots/$(date +'%Y%m%d-%H%M%S').png" }

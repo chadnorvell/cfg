@@ -35,24 +35,7 @@ in
   programs.walker = {
     enable = true;
     runAsService = true;
-
-    config = {
-      force_keyboard_focus = true;
-
-      providers."default" = [
-        "desktopapplications"
-        "menus:commands"
-        "runner"
-      ];
-
-      providers.prefixes = [
-        { provider = "providerlist"; prefix = ";"; }
-        { provider = "files"; prefix = "/"; }
-        { provider = "menus:commands"; prefix = "="; }
-        { provider = "runner"; prefix = "."; }
-        { provider = "symbols"; prefix = ","; }
-      ];
-    };
+    config = {};
   };
 
   wayland.windowManager.sway = {
@@ -71,6 +54,7 @@ in
   xdg.configFile."sway/config.d".source = symHome "sway/config.d";
   xdg.configFile."swayidle".source = symHome "sway/swayidle";
   xdg.configFile."swaylock".source = symHome "sway/swaylock";
+  xdg.configFile."walker".source = symHome "walker";
   xdg.configFile."waybar".source = symHome "waybar";
 
   xdg.enable = true;
