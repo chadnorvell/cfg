@@ -1,6 +1,0 @@
-timeout 120 '[ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && brightnessctl --save && brightnessctl set 20%' resume 'brightnessctl --restore'
-timeout 180 'exec swaylock'
-timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
-timeout 600 '[ "$(cat /sys/class/power_supply/AC/online)" = "0" ] && systemctl suspend-then-hibernate'
-before-sleep 'exec swaylock'
-lock swaylock

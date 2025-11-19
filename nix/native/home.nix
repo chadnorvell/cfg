@@ -4,7 +4,6 @@ let
   homeDirectory = config.home.homeDirectory;
   cfgRoot = "${homeDirectory}/cfg";
   cfgHomeRoot = "${cfgRoot}/home";
-  symCfg = path: config.lib.file.mkOutOfStoreSymlink "${cfgRoot}/${path}";
   symHome = path: config.lib.file.mkOutOfStoreSymlink "${cfgHomeRoot}/${path}";
 
   customIcons = [
@@ -28,34 +27,9 @@ in
     ../../home/plasma.nix
   ];
 
-  home.file = {
-    "media/images/wallpaper".source = symCfg "wallpaper";
-  } // createCustomIconFiles;
+  home.file = createCustomIconFiles;
 
-  programs.walker = {
-    enable = true;
-    runAsService = true;
-    config = {};
-  };
-
-  wayland.windowManager.sway = {
-    enable = true;
-    package = null;
-    config = null;
-
-    extraConfig = ''
-      include ~/.config/sway/config.d/*
-    '';
-  };
-
-  xdg.configFile."elephant/menus".source = symHome "elephant/menus";
   xdg.configFile."kitty".source = symHome "kitty";
-  xdg.configFile."shikane".source = symHome "shikane";
-  xdg.configFile."sway/config.d".source = symHome "sway/config.d";
-  xdg.configFile."swayidle".source = symHome "sway/swayidle";
-  xdg.configFile."swaylock".source = symHome "sway/swaylock";
-  xdg.configFile."walker".source = symHome "walker";
-  xdg.configFile."waybar".source = symHome "waybar";
 
   xdg.enable = true;
   xdg.userDirs = {

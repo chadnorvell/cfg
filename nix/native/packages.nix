@@ -6,9 +6,6 @@
 let
   stable = with pkgs; [
     android-tools
-    blueman
-    bluez
-    brightnessctl
     # calibre # Install hangs.
     chromium
     cifs-utils
@@ -24,27 +21,16 @@ let
         "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
       ];
     })
-    grim
     kitty
-    libqalculate
-    mako
     mpv
-    networkmanagerapplet
     obsidian
-    playerctl
     proton-pass
-    pwvucontrol
     qmk
-    shikane
     signal-desktop
-    slurp
     usbutils
     viu
-    waybar
-    wdisplays
     wl-clipboard
     vlc
-    wofi
   ];
 
   kde =

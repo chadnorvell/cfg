@@ -20,19 +20,6 @@
     ];
   };
 
-  programs.sway = {
-    enable = true;
-  };
-
-  programs.uwsm = {
-    enable = true;
-
-    waylandCompositors.sway = {
-      prettyName = "Sway";
-      binPath = "/run/current-system/sw/bin/sway";
-    };
-  };
-
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.useDHCP = lib.mkDefault true;
