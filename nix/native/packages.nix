@@ -6,6 +6,8 @@
 let
   stable = with pkgs; [
     android-tools
+    blueman
+    bluez
     brightnessctl
     # calibre # Install hangs.
     chromium
@@ -24,11 +26,14 @@ let
     })
     grim
     kitty
+    libqalculate
     mako
     mpv
+    networkmanagerapplet
     obsidian
     playerctl
     proton-pass
+    pwvucontrol
     qmk
     shikane
     signal-desktop
