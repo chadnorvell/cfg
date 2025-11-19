@@ -20,6 +20,10 @@
     ];
   };
 
+  programs.steam = {
+    enable = true;
+  };
+
   networking.networkmanager.enable = true;
   networking.wireless.iwd.enable = true;
   networking.useDHCP = lib.mkDefault true;
