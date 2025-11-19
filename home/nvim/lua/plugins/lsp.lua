@@ -133,7 +133,6 @@ return {
     opts = {
       bind = true,
       toggle_key = "<C-s>",
-      select_signature_key = "<Tab>",
     },
   },
   {
