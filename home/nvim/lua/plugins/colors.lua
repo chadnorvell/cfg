@@ -37,7 +37,7 @@ return {
     priority = 1000,
     config = function()
       if vim.g.neovide then
-        load_nordic()
+        load_gruvbox_dark()
       end
     end,
     keys = {

@@ -23,6 +23,7 @@ let
     })
     kitty
     mpv
+    neovide
     obsidian
     proton-pass
     qmk
