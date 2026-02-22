@@ -11,18 +11,22 @@
 let
   systemPkgs = with pkgs; [
     android-tools
+    antigravity-fhs
     bat
     btop
-    # calibre # Install hangs.
+    calibre
     chezmoi
     chromium
     cifs-utils
     clang
     clang-tools
+    claude-code
+    code-cursor-fhs
     curl
     darktable
     delta
     discord
+    emacs-unstable
     eza
     fastfetch
     fd
@@ -34,6 +38,7 @@ let
     flac
     fzf
     gcc
+    gemini-cli
     gimp
     git
     git-lfs
@@ -44,42 +49,63 @@ let
         "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
       ];
     })
+    grasp-backend
     groff
     gum
+    haruna
     hexyl
     htop
+    hunspell
+    hunspellDicts.en_US
+    hyphenDicts.en_US
     imagemagick
     inkscape
     jq
+    kicad
+    libreoffice-qt
     lua-language-server
     man-pages
     man-pages-posix
+    mkvtoolnix
     mpv
+    mupdf
     neovide
     neovim
     nil
     nixfmt
     obsidian
+    openscad
     openssh
-    opusTools
+    opus-tools
+    orca-slicer
+    poppler-utils
     procps
     proton-pass
+    protonmail-bridge
     psmisc
+    qbittorrent
+    qpdf
     ripgrep
     rsgain
     rsync
     signal-desktop
     silver-searcher
+    sqlitebrowser
     statix
     stylua
+    sublime-merge
+    texliveFull
+    thunderbird
     trash-cli
     usbutils
     vim
     viu
     vlc
+    vscode-fhs
     wl-clipboard
     yazi
     yq
+    zoom-us
   ];
 
   kdePkgs =
@@ -92,6 +118,8 @@ let
       kcharselect
       kcolorchooser
       kcron
+      kdenlive
+      kdialog
       kget
       kjournald
       kompare
@@ -101,6 +129,7 @@ let
       plasma-vault
       sddm-kcm
       skanpage
+      yakuake
     ];
 
   fontPkgs = with pkgs; [
@@ -194,7 +223,11 @@ in
     "1.1.1.1"
   ];
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    EDITOR = "vim";
+  };
+
   environment.systemPackages = systemPkgs ++ kdePkgs;
   fonts.packages = fontPkgs;
 
@@ -234,6 +267,7 @@ in
     drivers = with pkgs; [
       cups-browsed
       cups-filters
+      hplipWithPlugin
     ];
   };
 

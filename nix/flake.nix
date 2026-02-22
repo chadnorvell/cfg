@@ -3,6 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,6 +17,7 @@
       nixpkgs,
       nixos-hardware,
       home-manager,
+      emacs-overlay,
       ...
     }@inputs:
     let
@@ -35,6 +38,7 @@
           };
 
           modules = [
+            { nixpkgs.overlays = [ inputs.emacs-overlay.overlay ]; }
             (import ./nixos.nix { inherit hostName user; })
             ./hosts/${hostName}.nix
             home-manager.nixosModules.home-manager

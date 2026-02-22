@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   homeDirectory = config.home.homeDirectory;
@@ -51,5 +56,18 @@ in
     publicShare = "${homeDirectory}/pub";
     templates = "${homeDirectory}/docs/templates";
     videos = "${homeDirectory}/media/videos";
+  };
+
+  systemd.user.services.grasp-backend = {
+    Unit = {
+      Description = "Grasp backend for org-capture browser extension";
+    };
+    Service = {
+      ExecStart = "${pkgs.grasp-backend}/bin/grasp_backend serve --path ${homeDirectory}/org/weblog/weblog.org";
+      Restart = "always";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 }

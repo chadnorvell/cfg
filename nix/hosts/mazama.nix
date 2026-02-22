@@ -40,6 +40,9 @@
     { device = "/dev/disk/by-uuid/a6d47ef1-c47a-4b2d-b28f-099808b69fb1"; }
   ];
 
+  boot.resumeDevice = "/dev/disk/by-uuid/a6d47ef1-c47a-4b2d-b28f-099808b69fb1";
+  boot.kernelParams = [ "resume=UUID=a6d47ef1-c47a-4b2d-b28f-099808b69fb1" ];
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
