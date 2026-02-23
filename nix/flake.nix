@@ -62,6 +62,7 @@
         advaita = hostConfig "advaita" [ nixos-hardware.nixosModules.framework-16-amd-ai-300-series ];
         mazama = hostConfig "mazama" [ nixos-hardware.nixosModules.framework-amd-ai-300-series ];
         sunyata = hostConfig "sunyata" [ ];
+        claudius = hostConfig "claudius" [ ];
       };
     };
 }
