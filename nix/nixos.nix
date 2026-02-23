@@ -26,7 +26,6 @@ let
     darktable
     delta
     discord
-    emacs-unstable
     eza
     fastfetch
     fd
@@ -49,7 +48,6 @@ let
         "--enable-features=UseOzonePlatform,VaapiVideoDecodeLinuxGL,VaapiVideoEncoder,Vulkan,VulkanFromANGLE,DefaultANGLEVulkan,VaapiIgnoreDriverChecks,VaapiVideoDecoder,PlatformHEVCDecoderSupport,UseMultiPlaneFormatForHardwareVideo"
       ];
     })
-    grasp-backend
     groff
     gum
     haruna
@@ -73,6 +71,7 @@ let
     neovim
     nil
     nixfmt
+    nushell
     obsidian
     openscad
     openssh
