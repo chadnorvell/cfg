@@ -11,6 +11,7 @@
 let
   systemPkgs = with pkgs; [
     android-tools
+    ansifilter
     antigravity-fhs
     bat
     btop
@@ -38,6 +39,7 @@ let
     fzf
     gcc
     gemini-cli
+    gh
     gimp
     git
     git-lfs
@@ -60,6 +62,7 @@ let
     inkscape
     jq
     kicad
+    kitty
     libreoffice-qt
     lua-language-server
     man-pages
@@ -95,6 +98,7 @@ let
     sublime-merge
     texliveFull
     thunderbird
+    tmux
     trash-cli
     usbutils
     vim
